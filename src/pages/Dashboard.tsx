@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { FaSignOutAlt, FaDownload, FaThLarge, FaSearch, FaFilter, FaRedo } from "react-icons/fa";
+import { FaSignOutAlt, FaDownload, FaThLarge, FaSearch, FaFilter, FaRedo, FaExclamationTriangle } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useState } from "react";
-
+import Logo from "../assets/powernetImg.jpg";
 const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -66,18 +66,22 @@ const Dashboard = () => {
           animate={{ y: 0, opacity: 1 }}
           className="flex justify-between items-center bg-white p-6 rounded-xl shadow-md mb-6"
         >
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-red-500 to-pink-600 bg-clip-text text-transparent">
-            ⚡ POWERNETPRO
-          </h1>
-          <Link to="/ecosystem">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all"
-            >
-              View Ecosystem →
-            </motion.button>
-          </Link>
+          <img src={Logo} alt="logo" className="self-center w-xs " />
+          <div className="flex rounded-xl bg-gray-300">
+            <div className=" px-5 py-2 text-2xl text-black">Energy Generated</div>
+            <div className="bg-gray-500 text-white rounded-r-2xl px-5 py-2 text-2xl">100 Kwh</div>
+          </div>
+          <div className="flex rounded-xl bg-gray-300">
+            <div className=" px-5 py-2 text-2xl text-black">Energy Exported</div>
+            <div className="bg-gray-500 text-white rounded-r-2xl px-5 py-2 text-2xl">90 Kwh</div>
+          </div>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="p-3 bg-gray-300 rounded-lg hover:bg-gray-400 transition-colors"
+          >
+            <FaExclamationTriangle size={24} />
+          </motion.button>
         </motion.div>
 
         {/* Search & Filter Section */}
@@ -88,6 +92,9 @@ const Dashboard = () => {
           className="flex items-center gap-4 mb-6 bg-white p-4 rounded-xl shadow-md"
         >
           <h2 className="text-xl font-semibold text-gray-800">Your Sites</h2>
+          <div className="text-black bg-gray-300 px-2 py-1 rounded-md ">
+            {sites.length}
+          </div>
           <div className="relative flex-1">
             <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
             <input
@@ -163,9 +170,11 @@ const Dashboard = () => {
                     </span>
                   </td>
                   <td className="p-4 border-b">
-                    <button className="text-blue-600 hover:text-blue-800 transition-colors">
-                      📄
-                    </button>
+                    <Link to="/ecosystem">
+                      <button className="text-blue-600 hover:text-blue-800 transition-colors">
+                        📄
+                      </button>
+                    </Link>
                   </td>
                 </motion.tr>
               ))}

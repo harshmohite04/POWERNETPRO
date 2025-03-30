@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-
+import Logo from "../assets/powernetImg.jpg";
 const Welcome = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-green-50 to-green-100 px-4">
@@ -16,10 +16,8 @@ const Welcome = () => {
           transition={{ delay: 0.2, duration: 0.5 }}
           className="mb-6"
         >
-          <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent">
-            ⚡ POWERNETPRO
-          </h1>
-          <p className="text-gray-700 text-lg font-medium">For Better Tomorrow</p>
+          
+          <img src={Logo} alt="logo" className="self-center bg-red-500" />
         </motion.div>
 
         <motion.div
@@ -34,7 +32,7 @@ const Welcome = () => {
               whileTap={{ scale: 0.98 }}
               className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              LOGIN AS CLIENT
+              LOGIN
             </motion.button>
           </Link>
         </motion.div>
